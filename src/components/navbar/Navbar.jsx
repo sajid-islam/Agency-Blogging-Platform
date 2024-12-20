@@ -29,7 +29,7 @@ const Navbar = () => {
                     href="/"
                     className="text-xl font-semibold text-primary-500"
                 >
-                    Write & Publish
+                    Creative <span className="text-gray-text">Ink</span>
                 </Link>
             </div>
 
