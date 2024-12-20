@@ -13,7 +13,7 @@ const ContactPage = () => {
                 </h1>
             </header>
             <section className="mt-10 flex items-center gap-10">
-                <div className="flex-1 hidden md:flex justify-center">
+                <div className="flex-1 hidden md:flex justify-center moveAnimation">
                     <Image
                         src="/images/contact.svg"
                         width={400}

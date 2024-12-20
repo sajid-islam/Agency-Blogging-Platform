@@ -18,7 +18,7 @@ export default function Home() {
                         See Our Website
                     </Button>
                 </div>
-                <div className="flex-1 flex justify-center w-[250px]">
+                <div className="flex-1 mt-5 flex justify-center w-[250px] moveAnimation">
                     <Image
                         src={"/images/hero.svg"}
                         width={400}
