@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
     return (
         <main>
-            <section className="flex gap-10 items-center my-10">
+            <section className="flex  md:flex-row flex-col-reverse gap-10 items-center my-10">
                 <div className="flex-1 space-y-7">
-                    <h1 className="text-6xl font-bold leading-[1.25] bg-gradient-to-t to-primary-600 from-gray-200 bg-clip-text text-transparent">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.25] bg-gradient-to-t to-primary-600 from-gray-200 bg-clip-text text-transparent">
                         Creating Better Designs for Your Digital Ideas
                     </h1>
                     <p className="text-gray-text">
@@ -18,7 +18,7 @@ export default function Home() {
                         See Our Website
                     </Button>
                 </div>
-                <div className="flex-1 flex justify-center ">
+                <div className="flex-1 flex justify-center w-[250px]">
                     <Image
                         src={"/images/hero.svg"}
                         width={400}
