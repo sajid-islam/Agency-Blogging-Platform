@@ -54,14 +54,14 @@ const Navbar = () => {
 
                 {/* Sign-in Button */}
                 <div>
-                    <Button className="bg-primary-500 text-black">
+                    <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">
                         Sign in
                     </Button>
                 </div>
             </nav>
 
             {/* Mobile Navigation */}
-            <div className="md:hidden">
+            <div className="md:hidden z-50">
                 {/* Hamburger Menu Button */}
                 <button
                     aria-label="Toggle menu"
@@ -88,7 +88,7 @@ const Navbar = () => {
 
                         {/* Sign-in Button in Mobile Menu */}
                         <div className="flex justify-center items-center my-5">
-                            <Button className="bg-primary-500 text-black">
+                            <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">
                                 Sign in
                             </Button>
                         </div>
@@ -99,7 +99,11 @@ const Navbar = () => {
                                 <li key={link.id}>
                                     <Link
                                         href={link.path}
-                                        className="text-white text-xl"
+                                        className={`text-xl ${
+                                            pathname === link.path
+                                                ? "text-primary-600 border-b border-primary-600 font-medium"
+                                                : "text-white "
+                                        }`}
                                     >
                                         {link.title}
                                     </Link>
