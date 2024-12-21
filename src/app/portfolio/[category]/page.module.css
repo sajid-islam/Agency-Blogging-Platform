@@ -1,0 +1,5 @@
+@media (min-width: 768px) {
+    .itemContainer:nth-child(2n) {
+        flex-direction: row-reverse;
+    }
+}
