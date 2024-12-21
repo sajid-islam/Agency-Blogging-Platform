@@ -1,11 +1,12 @@
 import Image from "next/image";
 import React from "react";
+import notFoundImg from "@/images/notFound.svg"
 
 const NotFoundPage = () => {
     return (
         <div className="grid h-screen place-content-center bg-white px-4">
             <div className="text-center">
-                <Image src="/images/notFound.svg" width={400} height={400} alt="not found image" />
+                <Image src={notFoundImg} width={400} height={400} alt="not found image" />
 
                 <h1 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     Uh-oh!

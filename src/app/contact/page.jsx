@@ -3,6 +3,7 @@ import React from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import contactImg from '@/images/contact.svg'
 
 const ContactPage = () => {
     return (
@@ -15,7 +16,7 @@ const ContactPage = () => {
             <section className="mt-10 flex items-center gap-10">
                 <div className="flex-1 hidden md:flex justify-center moveAnimation">
                     <Image
-                        src="/images/contact.svg"
+                        src={contactImg}
                         width={400}
                         height={400}
                         alt="contact page email illustration"

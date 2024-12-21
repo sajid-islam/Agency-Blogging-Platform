@@ -1,6 +1,7 @@
 import Image from "next/image";
 // import HeroImg from "/images/hero.svg"
 import { Button } from "@/components/ui/button";
+import heroImg from "@/images/hero.svg"
 
 export default function Home() {
     return (
@@ -20,7 +21,7 @@ export default function Home() {
                 </div>
                 <div className="flex-1 mt-5 flex justify-center w-[250px] moveAnimation">
                     <Image
-                        src={"/images/hero.svg"}
+                        src={heroImg}
                         width={400}
                         height={400}
                         alt="Home page hero image"

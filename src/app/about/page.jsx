@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import aboutImg from '@/images/about.jpg'
 
 const AboutPage = () => {
     return (
@@ -8,7 +9,8 @@ const AboutPage = () => {
                 <div className="relative w-full h-[300px]">
                     <Image
                         className="object-cover grayscale rounded-md"
-                        src="/images/about.jpg"
+                        src={aboutImg}
+                        placeholder="blur"
                         fill={true}
                         alt="about page cover image"
                     />
