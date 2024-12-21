@@ -4,7 +4,10 @@ import Image from "next/image";
 const Footer = () => {
     return (
         <footer className="flex flex-col md:flex-row gap-3 md:gap-0 justify-between my-5">
-            <p>©{new Date().getFullYear()} Sajid. All right reserved</p>
+            <p>
+                ©{new Date().getFullYear()} <span className="text-primary-600 font-semibold">CreativeInk</span>. All right
+                reserved
+            </p>
             <div className="flex items-center gap-2">
                 <Image
                     className="hover:cursor-pointer opacity-85"
