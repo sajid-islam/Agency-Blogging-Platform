@@ -8,7 +8,7 @@ export default function Home() {
         <main>
             <section className="flex  md:flex-row flex-col-reverse gap-10 items-center my-10">
                 <div className="flex-1 space-y-7">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-t py-2 to-primary-600 from-gray-200 bg-clip-text text-transparent">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-t py-2 to-primary-600 from-black/5 bg-clip-text text-transparent">
                         Creating Better Designs for Your Digital Ideas
                     </h1>
                     <p className="text-gray-text">

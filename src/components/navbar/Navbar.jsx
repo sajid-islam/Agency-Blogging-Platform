@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import ThemeToggleButton from "../themeToggleButton/ThemeToggleButton";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,14 +35,15 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="md:flex items-center gap-5 hidden">
+            <nav className="md:flex items-center gap-3 hidden">
+                <ThemeToggleButton/>
                 {/* Navigation Links */}
                 <ul className="md:flex gap-2">
                     {links.map((link) => (
                         <li key={link.id}>
                             <Link
                                 href={link.path}
-                                className={`hover:text-black px-1 ${
+                                className={`hover:text-black dark:hover:text-white px-1 ${
                                     pathname === link.path
                                         ? "text-primary-600 border-b border-primary-600 font-medium"
                                         : "text-gray-text"
@@ -54,7 +56,7 @@ const Navbar = () => {
                 </ul>
 
                 {/* Sign-in Button */}
-                <div>
+                <div className="ml-3">
                     <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">
                         Sign in
                     </Button>

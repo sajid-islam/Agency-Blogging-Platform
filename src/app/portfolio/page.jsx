@@ -14,7 +14,7 @@ const PortfolioPage = () => {
             <div className="flex flex-wrap gap-10 mt-5">
                 <Link
                     href="/portfolio/application"
-                    className="relative w-full md:w-[300px] h-[400px] text-white hover:text-primary-500 p-10 border-4 rounded-sm border-black bg-[url('/images/application.jpg')] bg-cover bg-no-repeat"
+                    className="relative w-full md:w-[300px] h-[400px] text-white hover:text-primary-500 p-10 border-4 rounded-sm border-black dark:border-gray-text"
                 >
                     <Image
                         className="object-cover"
@@ -28,7 +28,7 @@ const PortfolioPage = () => {
                     </span>
                 </Link>
                 <Link
-                    className="relative w-full md:w-[300px] h-[400px] text-white hover:text-primary-500 p-10 border-4 rounded-sm border-black bg-[url('/images/illustration.jpg')] bg-cover bg-no-repeat"
+                    className="relative w-full md:w-[300px] h-[400px] text-white hover:text-primary-500 p-10 border-4 rounded-sm border-black dark:border-gray-text "
                     href="/portfolio/illustrations"
                 >
                     <Image
@@ -44,7 +44,7 @@ const PortfolioPage = () => {
                     </span>
                 </Link>
                 <Link
-                    className="relative w-full md:w-[300px] h-[400px] text-white hover:text-primary-500 p-10 border-4 rounded-sm border-black bg-[url('/images/website.jpg')] bg-cover bg-no-repeat"
+                    className="relative w-full md:w-[300px] h-[400px] text-white hover:text-primary-500 p-10 border-4 rounded-sm border-black dark:border-gray-text "
                     href="/portfolio/website"
                 >
                     <Image
