@@ -1,11 +1,10 @@
 import React from "react";
 import userLight from "@/images/userLight.png";
-import userDark from "@/images/userDark.png";
 import Image from "next/image";
 
 const BlogPost =async ({params}) => {
-    const id = await params.id;
-    const data = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+    const param = await params;
+    const data = await fetch(`https://jsonplaceholder.typicode.com/posts/${param.id}`);
     const blog = await data.json();
     return (
         <main>

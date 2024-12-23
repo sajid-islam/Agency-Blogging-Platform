@@ -4,11 +4,11 @@ import notFoundImg from "@/images/notFound.svg"
 
 const NotFoundPage = () => {
     return (
-        <div className="grid h-screen place-content-center bg-white px-4">
+        <div className="grid h-screen place-content-center px-4">
             <div className="text-center">
                 <Image src={notFoundImg} width={400} height={400} alt="not found image" />
 
-                <h1 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                <h1 className="mt-6 text-2xl font-bold tracking-tight  sm:text-4xl">
                     Uh-oh!
                 </h1>
 
