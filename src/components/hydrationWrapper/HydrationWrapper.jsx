@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/app/loading";
 import React, { useEffect, useState } from "react";
 
 const HydrationWrapper = ({ children }) => {
@@ -6,7 +7,7 @@ const HydrationWrapper = ({ children }) => {
     useEffect(() => {
         setMounted(true);
     }, []);
-    if (!mounted) return null;
+    if (!mounted) return <Loading/>;
     return children;
 };
 
