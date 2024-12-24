@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import blogImg from '@/images/website.jpg'
 
 const BlogPage = async () => {
     const data = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -17,9 +18,10 @@ const BlogPage = async () => {
                         <div className="w-full md:w-[300px] h-[200px] relative">
                             <Image
                                 className="object-cover"
-                                src="/images/website.jpg"
+                                src={blogImg}
                                 alt="blog image"
                                 fill={true}
+                                placeholder="blur"
                             />
                         </div>
                         <div className="space-y-3 flex-1">

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import notFoundImg from "@/images/notFound.svg"
+import notFoundImg from "@/images/notFound.svg";
 
 const NotFoundPage = () => {
     return (

@@ -1,6 +1,7 @@
 import React from "react";
 import userLight from "@/images/userLight.png";
 import Image from "next/image";
+import blogImg from '@/images/about.jpg'
 
 const BlogPost =async ({params}) => {
     const param = await params;
@@ -29,9 +30,10 @@ const BlogPost =async ({params}) => {
                 <div className="md:flex-1 relative w-full h-[250px]">
                     <Image
                         className="rounded-lg object-cover"
-                        src="/images/about.jpg"
+                        src={blogImg}
                         alt="blog image"
                         fill={true}
+                        placeholder="blur"
                     />
                 </div>
             </section>

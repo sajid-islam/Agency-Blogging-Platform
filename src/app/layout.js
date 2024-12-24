@@ -1,10 +1,16 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/footer/Footer";
-import { icons } from "lucide-react";
 import { ThemeProvider } from "next-themes";
 import HydrationWrapper from "@/components/hydrationWrapper/HydrationWrapper";
+import {
+    ClerkProvider,
+    SignInButton,
+    SignedIn,
+    SignedOut,
+    UserButton,
+} from "@clerk/nextjs";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -18,27 +24,31 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" className="light">
-            <body className={`${inter.variable} antialiased dark:bg-[#101720]`}>
-                <HydrationWrapper>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="light"
-                        enableSystem={true}
-                        disableTransitionOnChange
-                    >
-                        <main className="max-w-6xl mx-auto px-5">
-                            <nav>
-                                <Navbar />
-                            </nav>
-                            <div className="min-h-[80vh]">{children}</div>
-                            <footer>
-                                <Footer />
-                            </footer>
-                        </main>
-                    </ThemeProvider>
-                </HydrationWrapper>
-            </body>
-        </html>
+        <ClerkProvider>
+            <html lang="en" className="light">
+                <body
+                    className={`${inter.variable} antialiased dark:bg-[#101720]`}
+                >
+                    <HydrationWrapper>
+                        <ThemeProvider
+                            attribute="class"
+                            defaultTheme="light"
+                            enableSystem={true}
+                            disableTransitionOnChange
+                        >
+                            <main className="max-w-6xl mx-auto px-5">
+                                <nav>
+                                    <Navbar />
+                                </nav>
+                                <div className="min-h-[80vh]">{children}</div>
+                                <footer>
+                                    <Footer />
+                                </footer>
+                            </main>
+                        </ThemeProvider>
+                    </HydrationWrapper>
+                </body>
+            </html>
+        </ClerkProvider>
     );
 }
