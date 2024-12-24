@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import ThemeToggleButton from "../themeToggleButton/ThemeToggleButton";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -112,6 +112,7 @@ const Navbar = () => {
                             {links.map((link) => (
                                 <li key={link.id}>
                                     <Link
+                                    onClick={() => setIsMenuOpen(false)}
                                         href={link.path}
                                         className={`text-xl ${
                                             pathname === link.path
