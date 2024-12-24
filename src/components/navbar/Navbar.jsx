@@ -6,12 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import ThemeToggleButton from "../themeToggleButton/ThemeToggleButton";
-import {
-    SignInButton,
-    SignedIn,
-    SignedOut,
-    UserButton
-  } from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,7 +37,7 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <nav className="md:flex items-center gap-3 hidden">
-                <ThemeToggleButton/>
+                <ThemeToggleButton />
                 {/* Navigation Links */}
                 <ul className="md:flex gap-2">
                     {links.map((link) => (
@@ -65,8 +60,10 @@ const Navbar = () => {
                 <div className="ml-3">
                     <SignedOut>
                         <Link href="/sign-in">
-                        <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">Signin</Button>
-                        </Link>       
+                            <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">
+                                Signin
+                            </Button>
+                        </Link>
                     </SignedOut>
                     <SignedIn>
                         <UserButton />
@@ -101,10 +98,13 @@ const Navbar = () => {
                         </div>
 
                         {/* Sign-in Button in Mobile Menu */}
-                        <div className="flex justify-center items-center my-5">
-                            <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">
-                                Sign in
-                            </Button>
+                        <div className="flex justify-between items-center my-5">
+                            <ThemeToggleButton />
+                            <Link href="/sign-in">
+                                <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">
+                                    Sign in
+                                </Button>
+                            </Link>
                         </div>
 
                         {/* Navigation Links in Mobile Menu */}
