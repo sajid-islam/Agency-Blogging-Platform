@@ -26,7 +26,14 @@ const Navbar = () => {
     return (
         <header className="my-5 flex justify-between items-center">
             {/* Logo Section */}
-            <div>
+            <div className="flex  gap-3">
+                <button
+                    className="md:hidden text-xl text-gray-text"
+                    aria-label="Toggle menu"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                    <GiHamburgerMenu />
+                </button>
                 <Link
                     href="/"
                     className="text-xl font-semibold text-primary-500"
@@ -73,18 +80,15 @@ const Navbar = () => {
 
             {/* Mobile Navigation */}
             <div className="md:hidden z-50">
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
                 {/* Hamburger Menu Button */}
-                <button
-                    aria-label="Toggle menu"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                >
-                    <GiHamburgerMenu />
-                </button>
 
                 {/* Mobile Menu */}
                 <aside
                     className={`w-72 h-screen bg-[#0C0C0C] fixed top-0 transition duration-500 ${
-                        isMenuOpen ? "right-0" : "translate-x-10"
+                        isMenuOpen ? "right-0" : "hidden"
                     }`}
                 >
                     <div className="py-5 px-3">
@@ -98,13 +102,15 @@ const Navbar = () => {
                         </div>
 
                         {/* Sign-in Button in Mobile Menu */}
-                        <div className="flex justify-between items-center my-5">
+                        <div className="flex justify-between items-center my-5 ml-2">
                             <ThemeToggleButton />
-                            <Link href="/sign-in">
-                                <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">
-                                    Sign in
-                                </Button>
-                            </Link>
+                            <SignedOut>
+                                <Link onClick={()=>setIsMenuOpen(false)} href="/sign-in">
+                                    <Button className="bg-primary-500 hover:bg-primary-400 font-medium text-black">
+                                        Sign in
+                                    </Button>
+                                </Link>
+                            </SignedOut>
                         </div>
 
                         {/* Navigation Links in Mobile Menu */}
@@ -112,7 +118,7 @@ const Navbar = () => {
                             {links.map((link) => (
                                 <li key={link.id}>
                                     <Link
-                                    onClick={() => setIsMenuOpen(false)}
+                                        onClick={() => setIsMenuOpen(false)}
                                         href={link.path}
                                         className={`text-xl ${
                                             pathname === link.path
