@@ -1,32 +1,33 @@
-const { default: mongoose } = require("mongoose");
+const mongoose  = require("mongoose");
 
-const blogSchema = new mongoose.Schema({
-    title: {
+const userSchema = new mongoose.Schema({
+    clerkId: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    firstName: {
         type: String,
         required: true,
     },
-    description: {
+    lastName: {
         type: String,
         required: true,
     },
-    content: {
+    email: {
         type: String,
         required: true,
     },
-    authorImage: {
+    photo: {
         type: String,
         required: true,
     },
-    authorName:{
-        type: String,
-        required: true,
-    },
-    coverImg: {
+    username: {
         type: String,
         required: true,
     },
 });
 
-const Blog = mongoose.model("Blog", blogSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
-export default Blog;
+export default User;
