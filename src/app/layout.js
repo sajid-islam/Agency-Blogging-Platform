@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <ClerkProvider>
             <html lang="en" className="light">
                 <body
-                    className={`${inter.variable} antialiased dark:bg-[#101720]`}
+                    className={`${inter.variable} antialiased dark:bg-darkPrimary`}
                 >
                     <HydrationWrapper>
                         <ThemeProvider
