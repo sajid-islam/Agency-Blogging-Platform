@@ -13,18 +13,27 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    authorImage: {
+    image: {
         type: String,
         required: true,
     },
-    authorName:{
-        type: String,
-        required: true,
-    },
-    coverImg: {
-        type: String,
-        required: true,
-    },
+    author: [
+        {
+            name: {
+                type: String,
+                required: true,
+            },
+            photo: {
+                type: String,
+                required: true,
+            },
+            email: {
+                type: String,
+                required: true,
+            },
+            
+        },
+    ],
 });
 
 const Blog = mongoose.models.Blog || mongoose.model("Blog", blogSchema);

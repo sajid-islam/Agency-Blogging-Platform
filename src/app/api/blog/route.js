@@ -3,12 +3,12 @@ import connect from "utils/db";
 
 const { NextResponse } = require("next/server");
 
-export const GET = async (req) => {
+export const GET = async () => {
     try {
         await connect()
-        const blog = "Blog"
-        return new NextResponse(blog, { status: 200 });
+        const blog = await Blog.find()
+        return NextResponse.json(blog, { status: 200 });
     } catch (error) {
-        return new NextResponse("Server Error", { status: 500 });
+        return NextResponse.json("Server Error", { status: 500 });
     }
 };
