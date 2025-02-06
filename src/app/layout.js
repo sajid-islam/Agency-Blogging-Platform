@@ -36,14 +36,8 @@ export default function RootLayout({ children }) {
                             enableSystem={true}
                             disableTransitionOnChange
                         >
-                            <main className="max-w-6xl mx-auto px-5">
-                                <nav>
-                                    <Navbar />
-                                </nav>
+                            <main>
                                 <div className="min-h-[80vh]">{children}</div>
-                                <footer>
-                                    <Footer />
-                                </footer>
                             </main>
                         </ThemeProvider>
                     </HydrationWrapper>

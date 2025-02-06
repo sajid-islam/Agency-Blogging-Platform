@@ -1,7 +1,7 @@
 import Image from "next/image";
 // import HeroImg from "/images/hero.svg"
 import { Button } from "@/components/ui/button";
-import heroImg from "../images/hero.svg"
+import heroImg from "../../images/hero.svg"
 
 export default function Home() {
     return (
