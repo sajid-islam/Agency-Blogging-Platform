@@ -43,7 +43,7 @@ const data = {
       items: [
         {
           title: "History",
-          url: "#",
+          url: "/",
         },
         {
           title: "Starred",
