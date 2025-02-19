@@ -13,8 +13,14 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { currentUser } from '@clerk/nextjs/server'
+import { redirect } from "next/dist/server/api-utils";
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout  = async ({ children }) => {
+    const user = await currentUser()
+    if(!user){
+        redirect("/")
+    }
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -29,16 +35,11 @@ const DashboardLayout = ({ children }) => {
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem className="hidden md:block">
-                                    <BreadcrumbLink href="#">
-                                        Building Your Application
+                                    <BreadcrumbLink href="/dashboard">
+                                        Blog
                                     </BreadcrumbLink>
                                 </BreadcrumbItem>
                                 <BreadcrumbSeparator className="hidden md:block" />
-                                <BreadcrumbItem>
-                                    <BreadcrumbPage>
-                                        Data Fetching
-                                    </BreadcrumbPage>
-                                </BreadcrumbItem>
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
