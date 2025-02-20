@@ -56,7 +56,6 @@ export function AppSidebar({ ...props }) {
         email: user?.emailAddresses[0].emailAddress,
         avatar:user?.imageUrl
     };
-    console.log(currentUser);
     return (
         <Sidebar variant="inset" {...props}>
             <SidebarHeader>

@@ -13,14 +13,9 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { currentUser } from '@clerk/nextjs/server'
-import { redirect } from "next/dist/server/api-utils";
+import { Toaster } from "sonner";
 
-const DashboardLayout  = async ({ children }) => {
-    const user = await currentUser()
-    if(!user){
-        redirect("/")
-    }
+const DashboardLayout = async ({ children }) => {
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -44,7 +39,10 @@ const DashboardLayout  = async ({ children }) => {
                         </Breadcrumb>
                     </div>
                 </header>
-                <div className="p-4 pt-0">{children}</div>
+                <div className="p-4 pt-0">
+                    {children}
+                    <Toaster richColors />
+                </div>
             </SidebarInset>
         </SidebarProvider>
     );
