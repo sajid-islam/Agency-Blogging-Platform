@@ -11,6 +11,15 @@ const nextConfig = {
             {
                 hostname: "images.unsplash.com",
             },
+            {
+                hostname: "i.ibb.co",
+            },
+            {
+                hostname: "img.clerk.com",
+            },
+            {
+                hostname: "i.ibb.co.com",
+            },
         ],
     },
 };
