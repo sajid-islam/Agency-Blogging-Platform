@@ -1,4 +1,4 @@
-import getAllBlogs from "@/lib/getAllBlogs";
+"use client";
 import {
     Table,
     TableBody,
@@ -8,9 +8,33 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import getMyBlogs from "@/lib/getMyBlogs";
+import { useUser } from "@clerk/nextjs";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const MyBlogsTable = async () => {
-    const blogs = await getAllBlogs();
+const MyBlogsTable = () => {
+    const [blogs, setBlogs] = useState([]);
+    const { user } = useUser();
+    useEffect(() => {
+        if (!user) return;
+        const email = user.emailAddresses[0].emailAddress;
+        axios.get(`http://localhost:3000/api/my-blogs/${email}`).then((res) => {
+            setBlogs(res.data);
+        });
+    }, [user]);
+
+    const handleDeleteBlog = (id) => {
+        axios.delete(`http://localhost:3000/api/blogs/${id}`).then((res) => {
+            console.log(res.data);
+            setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
+        });
+    };
+    if (!blogs) {
+        return (
+            <div className="text-xl mt-10 text-center">Blogs Loading...</div>
+        );
+    }
 
     return (
         <div className="w-full">
@@ -42,7 +66,12 @@ const MyBlogsTable = async () => {
                                     <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2">
                                         Update
                                     </button>
-                                    <button className="bg-red-500 text-white px-3 py-1 rounded">
+                                    <button
+                                        onClick={() =>
+                                            handleDeleteBlog(blog._id)
+                                        }
+                                        className="bg-red-500 text-white px-3 py-1 rounded"
+                                    >
                                         Delete
                                     </button>
                                 </TableCell>

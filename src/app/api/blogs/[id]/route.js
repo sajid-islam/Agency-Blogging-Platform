@@ -12,3 +12,9 @@ export const GET = async (request, { params }) => {
         return NextResponse.json("Server Error", { status: 500 });
     }
 };
+export const DELETE = async (request, {params}) =>{
+    await connect();
+    const param = await params;
+    const DeleteBlog = await Blog.findByIdAndDelete(param.id)
+    return NextResponse.json(DeleteBlog,{status:200})
+}
