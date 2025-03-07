@@ -14,20 +14,26 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const MyBlogsTable = () => {
+    const baseURL =
+        process.env.NODE_ENV === "production"
+            ? "https://creativeink.vercel.app/api/blogs"
+            : "http://localhost:3000/api/blogs";
     const [blogs, setBlogs] = useState([]);
     const { user } = useUser();
     useEffect(() => {
         if (!user) return;
         const email = user.emailAddresses[0].emailAddress;
-        axios.get(`http://localhost:3000/api/my-blogs/${email}`).then((res) => {
+        axios.get(`${baseURL}/api/my-blogs/${email}`).then((res) => {
             setBlogs(res.data);
         });
     }, [user]);
 
     const handleDeleteBlog = (id) => {
-        axios.delete(`http://localhost:3000/api/blogs/${id}`).then((res) => {
+        axios.delete(`${baseURL}/api/blogs/${id}`).then((res) => {
             console.log(res.data);
-            setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
+            setBlogs((prevBlogs) =>
+                prevBlogs.filter((blog) => blog._id !== id)
+            );
         });
     };
     if (!blogs) {

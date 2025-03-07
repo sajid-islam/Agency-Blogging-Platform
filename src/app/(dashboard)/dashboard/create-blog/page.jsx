@@ -9,9 +9,13 @@ import React, { useState } from "react";
 import { toast } from "sonner";
 
 const CreateBlog = () => {
+    const baseURL =
+        process.env.NODE_ENV === "production"
+            ? "https://creativeink.vercel.app/api/blogs"
+            : "http://localhost:3000/api/blogs";
     const { user } = useUser();
     const [loading, setLoading] = useState(false);
-    
+
     const handleCreateBlog = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -57,16 +61,16 @@ const CreateBlog = () => {
             const imageUrl = imgbbResponse.data.data.url;
 
             // 🔹 Submit blog post to API
-            await axios.post("http://localhost:3000/api/blogs", {
+            await axios.post(`${baseURL}/api/blogs`, {
                 author,
                 title,
-                image: imageUrl, 
+                image: imageUrl,
                 description,
                 content,
             });
 
             toast.success("Blog created successfully!");
-            e.target.reset(); 
+            e.target.reset();
         } catch (error) {
             console.error("Error:", error);
             toast.error("Something went wrong!");
@@ -82,23 +86,47 @@ const CreateBlog = () => {
                 <div className="flex flex-col md:flex-row gap-5">
                     <div className="w-full">
                         <Label htmlFor="title">Title</Label>
-                        <Input name="title" type="text" placeholder="Enter your title" required />
+                        <Input
+                            name="title"
+                            type="text"
+                            placeholder="Enter your title"
+                            required
+                        />
                     </div>
                     <div className="w-full">
                         <Label htmlFor="image">Upload Image</Label>
-                        <Input name="image" type="file" accept="image/*" required />
+                        <Input
+                            name="image"
+                            type="file"
+                            accept="image/*"
+                            required
+                        />
                     </div>
                 </div>
                 <div className="w-full">
                     <Label htmlFor="description">Description</Label>
-                    <Input name="description" type="text" placeholder="Write your description" required />
+                    <Input
+                        name="description"
+                        type="text"
+                        placeholder="Write your description"
+                        required
+                    />
                 </div>
                 <div className="w-full">
                     <Label htmlFor="content">Content</Label>
-                    <Textarea rows="10" name="content" placeholder="Write your content" required />
+                    <Textarea
+                        rows="10"
+                        name="content"
+                        placeholder="Write your content"
+                        required
+                    />
                 </div>
                 <div>
-                    <Button className="px-10 text-black" type="submit" disabled={loading}>
+                    <Button
+                        className="px-10 text-black"
+                        type="submit"
+                        disabled={loading}
+                    >
                         {loading ? "Creating..." : "Create"}
                     </Button>
                 </div>
