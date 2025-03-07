@@ -1,5 +1,9 @@
 const getAllBlogs = async () => {
-    const result = await fetch("/api/blogs", { cache: "no-store" });
+    const baseURL =
+        process.env.NODE_ENV === "production"
+            ? "https://creativeink.vercel.app/api/blogs"
+            : "http://localhost:3000/api/blogs";
+    const result = await fetch(baseURL, { cache: "no-store" });
     return result.json();
 };
 
