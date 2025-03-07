@@ -110,7 +110,6 @@ async function POST(req) {
             return NextResponse.json("Error: updating user", { status: 500 });
         }
     } else if (eventType === "user.deleted") {
-       
         try {
             const deleteCurrentUser = deleteUser(id);
             return NextResponse.json(deleteCurrentUser);

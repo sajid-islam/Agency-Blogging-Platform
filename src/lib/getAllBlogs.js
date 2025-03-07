@@ -1,5 +1,5 @@
 const getAllBlogs = async () => {
-    const result = await fetch("http://localhost:3000/api/blogs");
+    const result = await fetch("/api/blogs", { cache: "no-store" });
     return result.json();
 };
 

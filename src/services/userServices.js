@@ -2,7 +2,7 @@ const { default: User } = require("@/models/User");
 const { NextResponse } = require("next/server");
 const { default: connect } = require("utils/db");
 
-createUser = async (userData) => {
+const createUser = async (userData) => {
     try {
         await connect();
         const newUser = await User.create(userData);
@@ -13,7 +13,7 @@ createUser = async (userData) => {
     }
 };
 
-updateUser = async (userData) => {
+const updateUser = async (userData) => {
     const { clerkId, firstName, lastName, photo, email, username } = userData;
     await connect();
     const existingUser = await User.findOne({ clerkId });
@@ -36,9 +36,9 @@ updateUser = async (userData) => {
     return updatedUser;
 };
 
-deleteUser = async (clerkId) => {
+const deleteUser = async (clerkId) => {
     await connect();
-    const deleteOneUser = await User.deleteOne({clerkId})
+    const deleteOneUser = await User.deleteOne({ clerkId });
     return deleteOneUser;
 };
 
