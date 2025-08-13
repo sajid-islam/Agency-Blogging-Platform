@@ -11,8 +11,8 @@ import { toast } from "sonner";
 const CreateBlog = () => {
     const baseURL =
         process.env.NODE_ENV === "production"
-            ? "https://creativeink.vercel.app/api/blogs"
-            : "http://localhost:3000/api/blogs";
+            ? "https://creativeink.vercel.app"
+            : "http://localhost:3000";
     const { user } = useUser();
     const [loading, setLoading] = useState(false);
 

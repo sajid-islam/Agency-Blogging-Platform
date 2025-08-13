@@ -22,5 +22,6 @@ export const POST = async (request) => {
         return NextResponse.json("Blog has been created", { status: 201 });
     } catch (error) {
         return NextResponse.json("Server Error", { status: 500 });
+        console.log("Error in blogs post route",error)
     }
 };
