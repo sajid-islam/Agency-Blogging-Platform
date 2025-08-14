@@ -14,6 +14,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AlertDialog, AlertDialogTrigger } from "../ui/alert-dialog";
 import BlogUpdateDialog from "../BlogUpdateDialog/BlogUpdateDialog";
+import { toast } from "sonner";
 
 const MyBlogsTable = () => {
     const baseURL =
@@ -35,11 +36,34 @@ const MyBlogsTable = () => {
     }, [user, refetch]);
 
     const handleDeleteBlog = (id) => {
-        axios.delete(`${baseURL}/api/blogs/${id}`).then((res) => {
-            console.log(res.data);
-            setBlogs((prevBlogs) =>
-                prevBlogs.filter((blog) => blog._id !== id)
-            );
+        toast("Are you sure you want to delete this blog?", {
+            action: {
+                label: "Delete",
+                onClick: async () => {
+                    try {
+                        const res = await axios.delete(
+                            `${baseURL}/api/blogs/${id}`
+                        );
+                        console.log(res.data);
+
+                        setBlogs((prevBlogs) =>
+                            prevBlogs.filter((blog) => blog._id !== id)
+                        );
+
+                        toast.success("Blog deleted successfully");
+                    } catch (err) {
+                        console.error(err);
+                        toast.error("Failed to delete blog");
+                    }
+                },
+            },
+            cancel: {
+                label: "Cancel",
+                onClick: () => {
+                    toast.message("Deletion canceled");
+                },
+            },
+            duration: Infinity, // so it stays until action
         });
     };
     if (!blogs) {
