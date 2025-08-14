@@ -15,13 +15,13 @@ export const GET = async () => {
 
 export const POST = async (request) => {
     const blog = await request.json();
-    const newBlog = new Blog(blog)
+    const newBlog = new Blog(blog);
     try {
         await connect();
-        await newBlog.save()
+        await newBlog.save();
         return NextResponse.json("Blog has been created", { status: 201 });
     } catch (error) {
+        console.log("Error in blogs post route", error);
         return NextResponse.json("Server Error", { status: 500 });
-        console.log("Error in blogs post route",error)
     }
 };

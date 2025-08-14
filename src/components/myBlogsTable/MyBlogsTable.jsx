@@ -12,21 +12,27 @@ import getMyBlogs from "@/lib/getMyBlogs";
 import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { AlertDialog, AlertDialogTrigger } from "../ui/alert-dialog";
+import BlogUpdateDialog from "../BlogUpdateDialog/BlogUpdateDialog";
 
 const MyBlogsTable = () => {
     const baseURL =
         process.env.NODE_ENV === "production"
             ? "https://creativeink.vercel.app"
             : "http://localhost:3000";
+
     const [blogs, setBlogs] = useState([]);
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const [refetch, setRefetch] = useState(false);
     const { user } = useUser();
+
     useEffect(() => {
         if (!user) return;
         const email = user.emailAddresses[0].emailAddress;
         axios.get(`${baseURL}/api/my-blogs/${email}`).then((res) => {
             setBlogs(res.data);
         });
-    }, [user]);
+    }, [user, refetch]);
 
     const handleDeleteBlog = (id) => {
         axios.delete(`${baseURL}/api/blogs/${id}`).then((res) => {
@@ -69,9 +75,22 @@ const MyBlogsTable = () => {
                                 <TableCell>{blog.title}</TableCell>
                                 <TableCell>{blog.description}</TableCell>
                                 <TableCell>
-                                    <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2">
-                                        Update
-                                    </button>
+                                    <AlertDialog
+                                        open={dialogOpen}
+                                        onOpenChange={setDialogOpen}
+                                    >
+                                        <AlertDialogTrigger asChild>
+                                            <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2">
+                                                Update
+                                            </button>
+                                        </AlertDialogTrigger>
+                                        <BlogUpdateDialog
+                                            blog={blog}
+                                            onClose={() => setDialogOpen(false)}
+                                            baseURL={baseURL}
+                                            setRefetch={setRefetch}
+                                        />
+                                    </AlertDialog>
                                     <button
                                         onClick={() =>
                                             handleDeleteBlog(blog._id)
