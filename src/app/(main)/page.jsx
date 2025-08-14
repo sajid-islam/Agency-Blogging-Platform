@@ -1,7 +1,8 @@
 import Image from "next/image";
 // import HeroImg from "/images/hero.svg"
 import { Button } from "@/components/ui/button";
-import heroImg from "../../images/hero.svg"
+import heroImg from "../../images/hero.svg";
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -16,7 +17,7 @@ export default function Home() {
                         ideas into impactful solutions.
                     </p>
                     <Button className="bg-primary-500 hover:bg-primary-400 font-semibold text-white">
-                        See Our Website
+                        <Link href="/portfolio/website">See Our Website</Link>
                     </Button>
                 </div>
                 <div className="flex-1 mt-5 flex justify-center w-[250px] moveAnimation">
